@@ -1,0 +1,119 @@
+{
+    "contact_us": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Contact Us",
+        "content": {
+            "heading": "text",
+            "content": "text",
+            "map_key": "text",
+            "latitude": "text",
+            "longitude": "text"
+        },
+        "element": {
+            "title": "text",
+            "icon": "icon",
+            "content": "text",
+            "modal": true
+        }
+    },
+    "footer": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Footer Section",
+        "content": {
+            "images": {
+                "payment_image": {
+                    "size": "200x30"
+                }
+            },
+            "content": "textarea"
+        }
+    },
+    "about": {
+        "builder": true,
+        "name": "About Us",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "837x554"
+                }
+            },
+            "heading": "text",
+            "content": "textarea"
+        }
+    },
+    "policy_pages": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Policy Pages",
+        "hide_builder": true,
+        "element": {
+            "title": "text",
+            "slug": "title",
+            "details": "textarea-nic",
+            "modal": false,
+            "seo": true
+        }
+    },
+    "faq": {
+        "builder": true,
+        "name": "FAQ Section",
+        "content": {
+            "heading": "text"
+        },
+        "element": {
+            "question": "text",
+            "answer": "textarea",
+            "modal": true
+        }
+    },
+    "blog": {
+        "builder": true,
+        "name": "Blog Section",
+        "element": {
+            "images": {
+                "image": {
+                    "size": "875x420",
+                    "thumb": "440x210"
+                }
+            },
+            "title": "text",
+            "slug": "title",
+            "description": "textarea-nic",
+            "modal": false,
+            "seo": true
+        }
+    },
+    "subscribe": {
+        "builder": true,
+        "name": "Subscribe Section",
+        "content": {
+            "content": "text"
+        }
+    },
+    "social_icon": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Social Icons",
+        "element": {
+            "title": "text",
+            "social_icon": "icon",
+            "url": "text",
+            "modal": true
+        }
+    },
+    "banned": {
+        "builder": true,
+        "no_selection": true,
+        "name": "Banned Page",
+        "content": {
+            "images": {
+                "image": {
+                    "size": "700x400"
+                }
+            },
+            "heading": "text"
+        }
+    }
+}
