@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+node_modules
+vendor
+composer.lock
+*.log
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+tests
+.phpunit.result.cache
