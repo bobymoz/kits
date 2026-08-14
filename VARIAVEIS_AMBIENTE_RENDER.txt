@@ -1,0 +1,40 @@
+# ==========================================
+# VARIÁVEIS DE AMBIENTE - E-KITS (RENDER)
+# ==========================================
+# Copie este conteúdo e cole no Render como variáveis de ambiente.
+# Depois edite os valores conforme necessário (especialmente DB e APP_KEY).
+
+# --- Configurações da Aplicação ---
+APP_NAME=E-kits
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:GERE_UMA_CHAVE_NOVA_AQUI==
+APP_URL=https://seu-projeto.onrender.com
+
+# --- Banco de Dados (Supabase PostgreSQL) ---
+DB_CONNECTION=pgsql
+DB_HOST=db.xxxxxxxx.supabase.co
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres.seu-projeto
+DB_PASSWORD=SUA_SENHA_SUPABASE_AQUI
+
+# --- Cache e Sessão (Usando Database) ---
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
+CACHE_STORE=database
+QUEUE_CONNECTION=database
+
+# --- Sistema de Arquivos ---
+FILESYSTEM_DISK=local
+
+# --- Configurações Adicionais Opcionais ---
+# LOG_CHANNEL=stderr
+# BROADCAST_DRIVER=log
+# CACHE_DRIVER=database
+# SESSION_CONNECTION=admins
+# QUEUE_DRIVER=database
+
+# --- Segurança (Opcional, mas recomendado) ---
+# TRUSTED_PROXIES=*
+# SECURE_COOKIES=true

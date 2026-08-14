@@ -1,7 +1,28 @@
 ```
-# Environment variables and config
-*.env
+# Docker related
+.dockerenv
+Dockerfile.backup
+*.dockerignore
+
+# Dependencies
+node_modules/
+vendor/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Environment
+.env
 .env.local
-.env.*
-VARIAVEIS_AMBIENTE_RENDER.txt
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
 ```
