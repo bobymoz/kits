@@ -13,11 +13,12 @@ APP_URL=https://seu-projeto.onrender.com
 
 # --- Banco de Dados (Supabase PostgreSQL) ---
 DB_CONNECTION=pgsql
-DB_HOST=db.xxxxxxxx.supabase.co
+DB_HOST=db.ktwnntvpztrkmguokdmo.supabase.co
 DB_PORT=5432
 DB_DATABASE=postgres
-DB_USERNAME=postgres.seu-projeto
+DB_USERNAME=postgres.ktwnntvpztrkmguokdmo
 DB_PASSWORD=SUA_SENHA_SUPABASE_AQUI
+DB_SSLMODE=require
 
 # --- Cache e Sessão (Usando Database) ---
 SESSION_DRIVER=database
