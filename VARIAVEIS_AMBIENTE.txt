@@ -1,0 +1,82 @@
+# Variáveis de Ambiente para Deploy no Render + Supabase
+
+## 📋 COPIE E COLE NO RENDER
+
+### Variáveis Obrigatórias:
+
+```
+APP_NAME=E-kits
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:GERE_UMA_CHAVE_AQUI==
+APP_URL=https://seu-site.onrender.com
+DB_CONNECTION=pgsql
+DB_HOST=db.xxxxxxxx.supabase.co
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres.seu-projeto
+DB_PASSWORD=sua-senha-aqui
+SESSION_DRIVER=database
+CACHE_STORE=database
+QUEUE_CONNECTION=database
+FILESYSTEM_DISK=local
+```
+
+### Variáveis Opcionais (Email):
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=seu-email@gmail.com
+MAIL_PASSWORD=sua-senha-app
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=noreply@ekits.com
+MAIL_FROM_NAME=E-kits
+```
+
+---
+
+## 🔑 GERAR APP_KEY
+
+Execute este código PHP uma vez e use o resultado:
+
+```php
+<?php echo 'base64:' . base64_encode(random_bytes(32)); ?>
+```
+
+Resultado (exemplo): `base64:xK8vN2mP9qL5wR3tY7uI1oA4sD6fG8hJ0kM2nB4vC6xZ8==`
+
+---
+
+## 🗄️ DADOS DO SUPABASE
+
+Obtenha em: https://supabase.com/dashboard/project/SEU_PROJETO/settings/database
+
+- **Host**: db.xxxxxxxx.supabase.co
+- **Port**: 5432
+- **Database**: postgres
+- **User**: postgres.seu-projeto
+- **Password**: (sua senha definida na criação)
+
+---
+
+## ⚙️ CONFIGURAÇÃO RENDER
+
+1. **Build Command**: Deixe em branco
+2. **Start Command**: Deixe em branco
+3. **Runtime**: Docker
+4. **Instance Type**: Free ou conforme necessidade
+
+---
+
+## 🎯 PASSOS FINAIS
+
+1. Importe o arquivo `Files/install/database.sql` no Supabase SQL Editor
+2. Adicione todas as variáveis acima no Render
+3. Faça deploy
+4. Acesse `/admin` e faça login
+
+**Login Admin Padrão:**
+- Email: `admin@site.com`
+- Senha: `123456` (ou resete via SQL se necessário)
