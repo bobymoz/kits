@@ -6,6 +6,10 @@ RUN apt-get update && apt-get install -y libzip-dev zip unzip && docker-php-ext-
 WORKDIR /app
 COPY . .
 
+# Engana o Laravel criando os arquivos que dizem que a instalação já foi concluída
+RUN touch storage/installed
+RUN touch .env
+
 # Libera permissões de escrita
 RUN chmod -R 777 storage bootstrap/cache
 
