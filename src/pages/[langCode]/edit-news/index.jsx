@@ -2,7 +2,7 @@
 import Meta from '@/components/commonComponents/seo/Meta';
 import { translate } from '@/utils/helpers.jsx';
 import dynamic from 'next/dynamic'
-const EditNews = dynamic(() => import('../../../components/pagesComponent/editNews /EditNews.jsx'), { ssr: false })
+const EditNews = dynamic(() => import('../../../components/pagesComponent/editNews/EditNews.jsx'), { ssr: false })
 
 const index = () => {
 
