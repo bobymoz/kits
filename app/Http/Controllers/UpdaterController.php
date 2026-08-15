@@ -42,7 +42,7 @@ class UpdaterController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
         ]);
-        $response = '{"error":false}';
+        $response = curl_exec($curl);
         if ($response) {
             curl_close($curl);
             $response = json_decode($response, true);

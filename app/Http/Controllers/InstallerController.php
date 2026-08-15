@@ -21,8 +21,30 @@ class InstallerController extends Controller
 
     public function checkPurchaseCode(Request $request)
     {
-		EnvSet::setKey('APPSECRET', $request->input('purchase_code'));
-		EnvSet::save();
-		return redirect()->route('install.database');
+        try {
+            $app_url = (string) url('/');
+            $app_url = preg_replace('#^https?://#i', '', $app_url).'/';
+            $curl = curl_init();
+            curl_setopt_array($curl, [
+                CURLOPT_URL => 'https://wrteam.in/validator/news_app_validator?purchase_code=' . $request->input('purchase_code') . '&domain_url=' . $app_url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+            ]);
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $response = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
+            if ($response['error']) {
+                return view('installer::steps.purchase-code', ['error' => $response['message']]);
+            }
+            EnvSet::setKey('APPSECRET', $request->input('purchase_code'));
+            EnvSet::save();
+            return redirect()->route('install.database');
+        } catch (Exception $e) {
+            $values = [
+                'purchase_code' => $request->get('purchase_code'),
+            ];
+            return view('vendor.installer.steps.purchase-code', ['values' => $values, 'error' => $e->getMessage()]);
+        }
     }
 }
