@@ -13,5 +13,5 @@ RUN touch .env
 # Libera permissões de escrita
 RUN chmod -R 777 storage bootstrap/cache
 
-# Cria as tabelas e liga o servidor
-CMD php artisan migrate --force && php -S 0.0.0.0:$PORT -t public
+# Cria as tabelas, POPULA OS DADOS PADRÃO e liga o servidor
+CMD php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:$PORT -t public
