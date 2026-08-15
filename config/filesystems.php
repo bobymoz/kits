@@ -2,7 +2,7 @@
 
 return [
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'cloudinary'),
 
     'disks' => [
 
@@ -16,12 +16,10 @@ return [
             'throw' => false,
         ],
 
+        // A MÁGICA ACONTECE AQUI:
+        // Quando o tema forçar o uso da pasta 'public', o Laravel vai jogar para o Cloudinary!
         'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-            'throw' => false,
+            'driver' => 'cloudinary',
         ],
 
     ],
