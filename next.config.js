@@ -5,7 +5,7 @@ require('dotenv').config()
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [`${process.env.NEXT_PUBLIC_API_URL}`],
+    domains: ['res.cloudinary.com', 'e-kits.onrender.com'],
     unoptimized: true
   },
   trailingSlash: false,
