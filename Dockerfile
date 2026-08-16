@@ -1,10 +1,16 @@
 FROM php:8.2-apache
 
-# Instala extensoes e ativa reescrita de URL do Apache
+# Instala extensoes e o motor OPcache
 RUN apt-get update && apt-get install -y libzip-dev zip unzip git libpng-dev libjpeg-dev libfreetype6-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql zip gd \
+    && docker-php-ext-install pdo_mysql zip gd opcache \
     && a2enmod rewrite
+
+# Ativa e configura o OPcache para velocidade extrema na memoria RAM
+RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini \
+    && echo "opcache.memory_consumption=128" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini \
+    && echo "opcache.interned_strings_buffer=8" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini \
+    && echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -25,9 +31,9 @@ RUN composer require cloudinary-labs/cloudinary-laravel --ignore-platform-reqs
 RUN touch storage/installed
 RUN touch .env
 
-# Da permissao total para o Apache ler e gravar arquivos
+# Permissao total para o Apache
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 777 storage bootstrap/cache
 
-# No momento da inicializacao: Configura a porta do Render, limpa o cache e liga o Apache!
-CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && php artisan optimize:clear && php artisan migrate --force && apache2-foreground
+# Comando de ligar: GERA O CACHE PROFUNDO do Laravel e liga o servidor!
+CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && php artisan optimize && php artisan view:cache && php artisan migrate --force && apache2-foreground
