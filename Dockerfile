@@ -35,5 +35,5 @@ RUN touch .env
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 777 storage bootstrap/cache
 
-# Comando de ligar: GERA O CACHE PROFUNDO do Laravel e liga o servidor!
-CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && php artisan optimize && php artisan view:cache && php artisan migrate --force && apache2-foreground
+# Comando de ligar: GERA O CACHE SEGURO (ignora as rotas bugadas) e liga o servidor!
+CMD sed -i "s/80/$PORT/g" /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf && php artisan config:cache && php artisan view:cache && php artisan migrate --force && apache2-foreground
